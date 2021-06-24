@@ -1,6 +1,7 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -15,10 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -60,7 +63,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvTitle, tvOverview;
         ImageView ivPoster;
@@ -70,6 +73,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Movie movie) {
@@ -80,24 +84,44 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvOverview.setMovementMethod(new ScrollingMovementMethod());
 
             String imageURL;
+            int radius = 0, margin = 0;
 
             // if the phone is in landscape
             if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 // then imageURL = back drop image
                 imageURL = movie.getBackdropPath();
+                radius = 10;
+                margin = 0;
             } else {
                 // else imageURL = poster image
                 imageURL = movie.getPosterPath();
+                radius = 30;
+                margin = 0;
             }
-
-            int radius = 30;
-            int margin = 0;
 
             Glide.with(context)
                     .load(imageURL)
                     .centerCrop()
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .into(ivPoster);
+        }
+
+        // When the user clicks on a row, show MovieDetailsActivity for the selected movie
+        @Override
+        public void onClick(View view) {
+            // Gets item position
+            int position = getAdapterPosition();
+            // Make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // Get the movie at the position, this won't work if the class is static
+                Movie movie = movies.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                // show the activity
+                context.startActivity(intent);
+            }
         }
     }
 }

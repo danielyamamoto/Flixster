@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="10dp"
+    android:paddingStart="0dp"
     android:paddingTop="0dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="0dp">
+    android:paddingRight="15dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/ivPoster"
@@ -37,12 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
+        android:layout_alignBottom="@+id/ivPoster"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/ivPoster"
-        android:maxHeight="160dp"
+        android:maxHeight="0dp"
         android:scrollbars="vertical"
         android:text="TextView" />
 </RelativeLayout>
