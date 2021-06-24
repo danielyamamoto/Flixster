@@ -1,6 +1,7 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,11 +79,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             // Sets scrollbar movement
             tvOverview.setMovementMethod(new ScrollingMovementMethod());
 
+            String imageURL;
+
+            // if the phone is in landscape
+            if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                // then imageURL = back drop image
+                imageURL = movie.getBackdropPath();
+            } else {
+                // else imageURL = poster image
+                imageURL = movie.getPosterPath();
+            }
+
             int radius = 30;
             int margin = 0;
 
             Glide.with(context)
-                    .load(movie.getPosterPath())
+                    .load(imageURL)
                     .centerCrop()
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .into(ivPoster);
