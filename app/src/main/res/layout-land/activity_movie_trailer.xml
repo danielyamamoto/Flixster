@@ -11,12 +11,6 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        tools:layout_editor_absoluteY="712dp" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

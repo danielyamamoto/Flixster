@@ -1,5 +1,6 @@
 package com.example.flixster;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,7 +16,7 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_trailer);
 
-        // Temporary test video id -- TODO replace with movie trailer video id
+        // Video id getted from movie details activity
         final String videoId = getIntent().getStringExtra(MovieTrailerActivity.class.getSimpleName());
 
         // Resolve the player view from the layout
@@ -28,6 +29,11 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
                                                 YouTubePlayer youTubePlayer, boolean b) {
                 // do any work here to cue video, play video, etc.
                 youTubePlayer.cueVideo(videoId);
+
+                // Set the YTPlayer automatically on fullscreen if in landscape
+                if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    youTubePlayer.setFullscreen(true);
+                }
             }
 
             @Override
@@ -37,6 +43,5 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
                 Log.e("MovieTrailerActivity", "Error initializing YouTube player");
             }
         });
-
     }
 }
