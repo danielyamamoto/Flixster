@@ -29,7 +29,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:scaleType="centerInside"
-        tools:srcCompat="@tools:sample/avatars"/>
+        tools:srcCompat="@tools:sample/avatars" />
 
     <RatingBar
         android:id="@+id/rbVoteAverage"
@@ -57,5 +57,18 @@
         android:layout_marginEnd="0dp"
         android:textAlignment="center"
         tools:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivPoster"
+        android:layout_alignTop="@+id/ivPoster"
+        android:layout_alignEnd="@+id/ivPoster"
+        android:layout_alignBottom="@+id/ivPoster"
+        android:scaleType="centerInside"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        app:srcCompat="@android:drawable/ic_media_play" />
 
 </RelativeLayout>

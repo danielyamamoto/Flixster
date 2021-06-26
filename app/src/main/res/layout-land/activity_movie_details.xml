@@ -61,4 +61,17 @@
         android:scaleY="2"
         android:stepSize="0.5" />
 
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivPoster"
+        android:layout_alignTop="@+id/ivPoster"
+        android:layout_alignEnd="@+id/ivPoster"
+        android:layout_alignBottom="@+id/ivPoster"
+        android:scaleType="centerInside"
+        android:scaleX="3"
+        android:scaleY="3"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
 </RelativeLayout>

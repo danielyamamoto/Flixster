@@ -34,9 +34,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
     // The view objects
     TextView tvTitle, tvOverview;
     RatingBar rbVoteAverage;
-    ImageView ivPoster;
-    String fullUrl;
-    String youTubeId;
+    ImageView ivPoster, ivPlay;
+    String fullUrl, youTubeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +52,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 goToTrailer();
             }
+        });
+        ivPlay = (ImageView) findViewById(R.id.ivPlay);
+        ivPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { goToTrailer(); }
         });
 
         // unwrap the movie passed in via intent, using its simple name as a key
