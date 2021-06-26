@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.databinding.ActivityMovieDetailsBinding;
 import com.example.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -40,20 +41,23 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        // layout of activity is stored in a special property called root
+        View view = binding.getRoot();
+        setContentView(view);
 
         // Resolve the view objects
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-        ivPoster = (ImageView) findViewById(R.id.ivPoster);
+        tvTitle = binding.tvTitle;
+        tvOverview = binding.tvOverview;
+        rbVoteAverage = binding.rbVoteAverage;
+        ivPoster = binding.ivPoster;
         ivPoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToTrailer();
             }
         });
-        ivPlay = (ImageView) findViewById(R.id.ivPlay);
+        ivPlay = binding.ivPlay;
         ivPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { goToTrailer(); }

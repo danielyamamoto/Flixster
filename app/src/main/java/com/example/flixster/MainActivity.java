@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.adapters.MovieAdapter;
+import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -32,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        // layout of activity is stored in a special property called root
+        View view = binding.getRoot();
+        setContentView(view);
+
+        RecyclerView rvMovies = binding.rvMovies;
         movies = new ArrayList<>();
 
         // Create the adapter

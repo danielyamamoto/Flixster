@@ -3,7 +3,9 @@ package com.example.flixster;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.example.flixster.databinding.ActivityMovieTrailerBinding;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -14,13 +16,16 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_trailer);
+        ActivityMovieTrailerBinding binding = ActivityMovieTrailerBinding.inflate(getLayoutInflater());
+        // layout of activity is stored in a special property called root
+        View view = binding.getRoot();
+        setContentView(view);
 
         // Video id getted from movie details activity
         final String videoId = getIntent().getStringExtra(MovieTrailerActivity.class.getSimpleName());
 
         // Resolve the player view from the layout
-        YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
+        YouTubePlayerView playerView = binding.player;
 
         // initialize with API key stored in secrets.xml
         playerView.initialize(getString(R.string.YT_API), new YouTubePlayer.OnInitializedListener() {
