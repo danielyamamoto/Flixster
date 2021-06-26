@@ -2,7 +2,6 @@ package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import okhttp3.Headers;
 public class MovieDetailsActivity extends AppCompatActivity {
 
     public static String VIDEO_URL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=aa1d75202114e558be15552fcdc90775&language=en-US";
-    Context context;
 
     // The movie to display
     Movie movie;
@@ -96,8 +94,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // then imageURL = back drop image
             imageURL = movie.getBackdropPath();
-            radius = 10;
-            margin = 0;
+            radius = 40;
+            margin = 10;
         } else {
             // else imageURL = poster image
             imageURL = movie.getPosterPath();

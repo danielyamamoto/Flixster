@@ -3,28 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:paddingEnd="10dp"
     tools:context=".MovieDetailsActivity">
 
     <ImageView
         android:id="@+id/ivPoster"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/ivPoster"
         android:layout_alignParentEnd="true"
-        android:background="#B2000000"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toEndOf="@+id/ivPoster"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="#FFFFFF"
         android:textSize="24sp"
         tools:text="Movie Title" />
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_alignBottom="@+id/ivPoster"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/ivPoster"
+        android:textAlignment="center"
+        tools:text="TextView" />
 
     <RatingBar
         android:id="@+id/rbVoteAverage"
@@ -33,22 +54,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPoster"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-20dp"
         android:numStars="5"
         android:scaleType="centerInside"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.5" />
-
-    <TextView
-        android:id="@+id/tvOverview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rbVoteAverage"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:textAlignment="center"
-        tools:text="TextView" />
 
 </RelativeLayout>
